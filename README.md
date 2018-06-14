@@ -47,7 +47,7 @@ Vous géré les utilisateurs depuis votre serveur ( 13ko sans le code métier) u
 La communication est interactive, le processus prend peu de mémoire , d’un coté comme de l’autre.
 La communication ce fait par message (voir xml ou json) , tout la saisie de vos formulaires ou écrans  sont comme sur un AS400 ou PC en direct , ce genre de communication est INTERACTIVE après à vous  de délirer (voir vos applications devis commandes stock fabrication … facturation .. ) 
 je me répète tout cela est accessible aujourd’hui et vous devez peut-être repenser l’accès de certaine de vos applications.
-J’ai mis sur https://gitlab.com/AS400JPLPC/test_websocket un exemple toutes les fonctions principales sont là pour faire vos premiers pas en c++ mais vous pouvez facilement l’adapter c# ou autre langage . 
+J’ai mis sur https://github.com/AS400JPLPC/test_websocket un exemple toutes les fonctions principales sont là pour faire vos premiers pas en c++ mais vous pouvez facilement l’adapter c# ou autre langage . 
 Je fais du C++ en web (ou RPG-ILE) pourquoi ;
 a) Rapidité , Fiabilité , Sécurité
 b) Simplicité 
