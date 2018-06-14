@@ -1,0 +1,363 @@
+<!DOCTYPE html>
+<html lang="fr-FR">
+	<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width">
+
+
+
+	<!==================================================
+	<!-- Placed at the end of the document so the pages load faster -->
+	
+
+		<script src="js/libs/jquery-3.1.0.js"></script>
+		<link rel="stylesheet" href="css/w3.css">
+		<link rel="stylesheet" href="css/JPLw3.min.css">
+		<script src="js/libs/prototype.min.js"></script>
+		<script src="js/libs/effects.min.js"></script>
+		<script src="js/libs/window.min.js"></script>
+		<script src="js/libs/window_effects.min.js"></script>
+		<script src="js/libs/validatorfunc.min.js"></script>
+		<script src="js/libs/validator.min.js"></script>		
+		<script src="js/libs/ecr00.min.js"></script>	
+		<script src="js/libs/XMLWriter.min.js"></script>					
+		<! le conteneur doit prendre en compte la bulle  pour placer le tooltip  
+		<! 18 pixel * n char chasse '16px blod '  +- 10 pixel  pour INPUT  
+		<! 16 pixel * n char pour le texte 
+		<!
+		<! voir css JPLw3.css
+		<!	merci	http://www.w3schools.com
+		<!	merci	https://jquery.com/
+		<!	
+		<!	pour faire des fenêtres windows 
+		<!	merci	http://prototypejs.org/
+		<!	merci	http://prototype-window.xilinus.com/download.html
+		<!
+		<!	pour le contrôleur de saisie 
+		<!	merci	https://travis-ci.org/chriso/
+		<!
+		<!	divers explications mais là je n'est plus assez de place
+		<!	http://www.html5rocks.com/en/tutorials/forms/constraintvalidation/#toc-what-is-it    setCustomValidity
+		<!	http://www.javascript-coder.com/	plein d'idées
+		<!	et tous les autres qui forme une vaste bibliothèque en ligne
+		<!
+		<!	
+		<!	https://www.libwebsockets.org/		pour le system socket	internet	permet de faire comme si l'on était sur un desktop 
+		<!
+		<!
+		<!	but du programme 
+		<!	tester les nouvelles technologie du web en respectant le circuit industriel des DATA
+		<!
+		<!	avoir des écrans cohérant (saisie de données ex clients / stocks / factures...)
+		<!	fiabilié et stabilité 
+		<!	le choix c'est porté sur HTML5
+		<!	voir https://developer.mozilla.org/en-US/
+		<!	
+		<!	le javascript	  JQUERY le tournevis des travailleurs
+		<!	CSS	w3schools.com 	incontournable pour rendre les écrans cohérent
+		<!						leurs models mon fait entendre raison  car je suis un fervent 5250 voir ncursew le top de la securité
+		<!	
+		<!	le modèle du programme doit devenir un template géré en c++ sur un serveur appache 
+		<!	il doit répondre aussi à la prévalidation
+		<!	
+		<!	c'est plutôt un contrôleur	de saisie qui ne remplacera pas le dernier contrôle fait par le programme d'écoute socket on est jamais assez prudent
+		<!	la partie code du programme ne doit pas être repensé ni touché il doit minimisé avec FJins c'est à dire pratiquement illisible aux profane.!!!!
+		<!	seule la partie HTML doit être retouché;
+		
+		<!	partie à mettre en fonction:
+		<!	le marqueur dans HTML pour être automatisable (template mecanisé)
+		<!	il faut arrivé a en faire un objet tel qu'un DSPF sur as400  pour cela on doit prendre comme solution la méthode PROOF (houlala cela me ramène en 1978)
+		<!	un écran un programme voir le MRT (IBM 35 ect)	et utiliser comme principe la Méthode AXIAL dans le moteur qui fait de la donnée un particpant
+		<!	à l'action dans la cohérence et la validité de l'ECRAN ou sur l'AS400 DSPF display File objet de  communication avec les programmes en temps réel 
+		<!	la plateform OS400	pratique l'OPDP open data space un modèle inégalé a l'heure actuel 
+		<!	mes espérance dans ce domaine est de mettre en place un OPDP sur linux ce limitant:
+		<!	un programme un ecran une imprimante des données sur serveur (mon choix Postgress )	tout cela ne faisant qu'un
+		<! ce qui est fait 
+		<!	le gestionnaire de communiquation de BD avec partage des fields ect...
+		<!	le model de zone :  ZONED  char à longueur fixer & buffering
+		<!						DCML	numérique de 31 chiffre signe la conception s'appui sur le moteur http://speleotrove.com/decimal/
+		<!						DATE	model comprenant la gestion de date conforme à la norme ISO 
+		<!	le model pour template html
+		<!	le websocket model de communication avec les programmes C++ et WEB
+		<!ce qui reste a faire ?????
+		<!================================================== 
+
+ 	</head> 
+
+<body class="w3-sand "  >
+ 
+<h1>Input Form css w3schools </h1>
+
+<form id="formid" >
+ <fieldset>
+<br>
+
+<table>
+    <tr> 
+		<td>Date</td>
+  	   <td>
+		<div class="w3-tooltip">
+		<input type="text" maxlength="10" class="inputccs" id="DATE" style="width: 190px;"> 
+		<span id='errDATE' style="position:variable;left:0;bottom:0px " 	class="w3-text w3-tag w3-round-xlarge"><b></b></span>
+		</div>
+		</td>
+
+	</tr>
+	    <tr> 	<td><br></td>	</tr>
+    <tr> 
+		<td>Nom</td>
+  	   <td>
+		<div class="w3-tooltip">
+		<input type="text" maxlength="30" class="inputccs" id="NOM" style="width: 550px;"> 
+		<span id='errNOM' style="position:absolute;left:0;bottom:+30px " 	class="w3-text w3-tag w3-round-xlarge"><b></b></span>
+		</div>
+		</td>
+ 
+  		<td>Prénom</td>
+  		<td>
+		<div class="w3-tooltip">
+		<input type="text" maxlength="30" class="inputccs" id="PRENOM" style="width: 550px"> 
+		<span id='errPRENOM' style="position:absolute;left:0;bottom:-28px" 	class="w3-text w3-tag w3-round-xlarge"><b></b></span>
+		</div>
+		</td>
+ 	
+	</tr>
+    <tr> 	<td><br></td>	</tr>
+
+    <tr> 
+    	<td>Rue</td>
+		<td><div class="w3-tooltip">
+		<input type="text" maxlength="5" class="inputccs" id="NRUE" style="width:110px"> 
+		<span id='errNRUE' style="position:absolute;left:0;bottom:-28px" 	class="w3-text w3-tag w3-round-xlarge"><b></b></span>
+		</div><td>
+	</tr>
+    <tr> 	<td><br></td>	</tr>
+
+    <tr> 
+    	<td>.</td>
+		<td><div class="w3-tooltip">
+		<input type="text" maxlength="30" class="inputccs" id="RUE1" style="width:550px"> 
+		<span id='errRUE1' style="position:absolute;left:0;bottom:-28px" 	class="w3-text w3-tag w3-round-xlarge"><b></b></span>
+		</div><td>
+	</tr>
+	    <tr> 	<td><br></td>	</tr>
+    <tr> 
+    	<td></td>
+		<td><div class="w3-tooltip">
+		<input type="text" maxlength="30" class="inputccs" id="RUE2" style="width:550px"> 
+		<span id='errRUE2' style="position:absolute;left:0;bottom:0px" 	class="w3-text w3-tag w3-round-xlarge"><b></b></span>
+		</div><td>
+	</tr>	
+
+</table>
+</fieldset>	
+<br>  
+    	<input type="text"    id="MSGOPEN"  readonly > 
+<br>
+		<input type="text"    id="MSGCLOSE" readonly > 
+ 
+<br> 
+    	<input type="text"    id="MSGREAD"  readonly> 
+ 
+<br> 
+		<input type="text"    id="MSGWRITE"  readonly>
+  
+<br>
+
+		<input class="w3-btn w3-blue-grey" type = "button" id="submitPage" value="valider"/>
+		<input type="reset" value="Reset Button">	
+
+ 
+	<br><br>
+     <div id='button'> 
+     <button type = "button"
+              onclick ='connectExit()'>"TERM-CONNECT"
+     </button>
+	</div>
+	
+	
+ <br><br>	
+ 
+</form>
+    <br><br>
+    Output:
+    <form><textarea id="ExampleOutput" style="width:100%" rows="15"></textarea>
+    
+
+</div>
+
+
+<script>
+         			  
+
+
+
+      var websocket ;
+      var con = 0; 
+      var IPJob = "";
+      var XMLbuffer = "";
+      var vFin = "";        
+function connect() {  
+     if(con == 0 )  {        
+          			 IPJob ='ws://192.168.0.12:9000/';
+         			 websocket = window.WebSocket || window.MozWebSocket;       
+     				 websocket= new WebSocket(IPJob,'echo');
+					 document.getElementById('MSGOPEN').value='';
+     				 document.getElementById('MSGCLOSE').value='';
+      				 document.getElementById('MSGREAD').value='';
+       				 document.getElementById('MSGWRITE').value='';
+     				 con =1;}
+
+ 
+ 
+         
+       
+  
+  
+       websocket.onopen = function() {
+       document.getElementById('MSGOPEN').value='Start Connection';
+            };
+       websocket.onclose = function() {
+       document.getElementById('MSGCLOSE').value='Close Connection';
+       if ( con == 1) { con =0; setTimeout(function(){connect()},0); }
+      };
+              
+       websocket.onmessage = function(event) { 
+       	 console.log(event.data);
+       	  
+   			 document.getElementById('MSGREAD').value='Websocket Message: read' ; 
+   			 if (event.data =="CLOSE-SERVEUR") connectStop();
+   			 document.getElementById('ExampleOutput').value='';
+			 document.getElementById('ExampleOutput').value=document.getElementById('ExampleOutput').value+ event.data ; 
+
+	 	
+
+		     
+      };
+ 
+            }; 
+ 
+ 
+      function send()
+            {     
+            		 document.getElementById('MSGOPEN').value='';
+     				 document.getElementById('MSGCLOSE').value='';
+      				 document.getElementById('MSGREAD').value='';
+       				 document.getElementById('MSGWRITE').value='';
+            		websocket.send("{%");   websocket.send(XMLbuffer);  websocket.send("%}");  
+            		console.log(XMLbuffer);  
+            		   
+  					document.getElementById('MSGWRITE').value='Websocket Message: write';
+  					 
+  				
+            };
+        function connectStop()
+            {
+              // websocket.send('SIGSTOP');  
+                     document.getElementById('MSGOPEN').value='';
+     				 document.getElementById('MSGCLOSE').value='';
+      				 document.getElementById('MSGREAD').value='';
+       				 document.getElementById('MSGWRITE').value='';
+ 		document.getElementById('MSGCLOSE').value='STOP Connection';
+	
+		// document.getElementById('ExampleOutput').value='';
+		 con=3;
+ 		 websocket.close();
+            };           
+            
+       function connectExit()
+            {  
+               websocket.send('SIGTERM');  
+		document.getElementById('MSGCLOSE').value='End Connection';
+	
+		 document.getElementById('ExampleOutput').value='';
+            };
+ 
+   
+      function sendText(vFin)
+            {     
+            		websocket.send(vFin);     
+		
+ 
+            };
+            
+ 
+ connect();
+ jQuery.noConflict();
+(function( $ ) { 
+ 
+//$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$ 
+// test online  
+$('input:text').change(function() {
+
+    form01 .CrtlElement($(this));
+
+});
+
+//$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$ 
+// clear msg tooltip  
+$('input:text').click(function() {		
+          
+ 	form01 .ClearTooltip($(this));
+ 	
+});
+
+//$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$ 
+ 
+// $("#formid").submit(function (e){ 
+$( "#submitPage" ).click(function(event) {
+ 
+		if ( form01.validatesubmit(event)) {  
+
+	
+		    //process communication interactif avec websocket
+		var XML=new XMLWriter();
+		XML.BeginNode("DSPF");
+		
+		 
+		XML.WriteString("RCDFMT","FMT01");
+		 
+		
+		XML.BeginSection("ZONED");
+				
+					XML.RowBegin("row");
+			 		XML.RowAtr($("#NOM").attr('id')	, jQuery.trim($("#NOM").val())); 
+			 		XML.RowAtr($("#PRENOM").attr('id')	, jQuery.trim($("#PRENOM").val())); 
+			 		XML.RowAtr($("#DATE").attr('id')	, jQuery.trim($("#DATE").val())); 
+			 		XML.RowAtr($("#NRUE").attr('id')	, jQuery.trim($("#NRUE").val())); 
+			 		XML.RowAtr($("#RUE1").attr('id')	, jQuery.trim($("#RUE1").val()));
+			 	 	XML.RowAtr($("#RUE2").attr('id')	, jQuery.trim($("#RUE2").val())); 			 		
+					XML.RowEnd();
+					
+		XML.EndSection();   
+		
+ 
+ 
+		XML.Close();
+				
+			XMLbuffer = XML.ToString();
+ 			 											
+	    send();
+ 
+		 }
+		else {
+ 
+				alert("not ok");
+		};
+		event.preventDefault();
+	return this.some_flag_variable;
+         
+  });
+})(jQuery);
+  window.addEventListener("beforeunload", function (event) {
+   console.log("mgs:fin");
+    sendText("mgs:fin"); 
+    windows.close();
+ //event.returnValue = "cancel";
+ });
+ //$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$
+
+</script>
+</body>
+
+</html>
