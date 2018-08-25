@@ -233,7 +233,7 @@ static const struct lws_extension exts[] = {
 
 #ifndef LWS_NO_EXTENSIONS
     info.extensions =  exts;  // sans extension  je n'ai plus de closed intenspestive  et le susytem est  bouffé
-                              // avec extension  le systeme n'est lus bouffé
+                              // avec extension  le systeme n'est plus bouffé
                               // et le timeout dans le html est quand même obligatoire dans les 2 cas
 #endif
 //if (!use_ssl) {
@@ -283,7 +283,7 @@ context = lws_create_context(&info);
 
     lws_service(context,20);
 // Libwebsocket_service traitera tous les événements d'attente avec leurs fonctions
-// de rappel, puis attendre 50 ms.
+// de rappel, puis attendre 20 ms.
 // (Ce qui est un seul serveur web fileté et cela permet de garder notre serveur
 // de génération de charge alors qu'il ya pas de demandes à traiter)
     }
