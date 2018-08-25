@@ -16,8 +16,8 @@ close global avec message ok
 interaction programme serveur et client html ok
 
 compilation -lwebsockets
-c+14 iso  ok
-"enable all warning" ok 
+c++14 iso  ok G++
+"enable all warning" ok  not GC
 
 controle avec la  console web ok
 
