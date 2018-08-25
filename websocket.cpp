@@ -7,7 +7,6 @@
 
 
 
-
 #define MAX_BUFFER_SIZE 4096  // a voir si pas assez grand pour un reccord
 
 #include <fstream>
